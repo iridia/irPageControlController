@@ -35,7 +35,7 @@
 		
 			this.options = $.extend(jQuery.kDeepCopyEnabled, {
 			
-				manifestObject: null,
+				manifestObject: undefined,
 				manifestObjectChildrenSelectorString: "li",
 				manifestObjectChildrenActiveCSSClass: "active",
 				
@@ -44,6 +44,8 @@
 				hoverredPageIndex: null
 			
 			}, inOptions);
+			
+			this.generateManifestObjectChildrens();
 		
 		},
 		
@@ -113,6 +115,9 @@
 		
 		generateManifestObjectChildrens: function () {		
 		
+			if ((this.options.manifestObject == undefined) || (this.options.manifestObject.length == 0))
+			return mono.error("The manifest object does not even exist for the childrens to be generated.  Bailing!");
+			
 			this.options.manifestObject.empty();
 			
 			var i = this.options.totalPages; while(i--) {
