@@ -122,13 +122,34 @@
 			
 			var i = this.options.totalPages; while(i--) {
 			
-				this.options.manifestObject.prepend(
+				var childrenObject = $(["<", this.options.manifestObjectChildrenSelectorString, "/>"].join(""));
 				
-					$(["<", this.options.manifestObjectChildrenSelectorString, "/>"].join(""))
+				var thisObject = this;
 				
-				);
+				childrenObject
+				.hover(function (event) {
+				
+					thisObject.handleManifestObjectChildrenMouseOver.call(thisObject, event)
+				
+				}, function (event) {
+				
+					thisObject.handleManifestObjectChildrenMouseOut.call(thisObject, event)
+				
+				}).prependTo(thisObject.options.manifestObject);
 			
 			}
+		
+		},
+		
+		handleManifestObjectChildrenMouseOver: function (event) {
+		
+			mono.log("handleManifestObjectChildrenMouseOver called.");
+		
+		},
+		
+		handleManifestObjectChildrenMouseOut: function (event) {
+		
+			mono.log("handleManifestObjectChildrenMouseOut called.");
 		
 		}
 	
