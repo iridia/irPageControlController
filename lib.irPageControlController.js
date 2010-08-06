@@ -45,7 +45,7 @@
 			
 			}, inOptions);
 			
-			this.generateManifestObjectChildrens();
+			this.generateManifestObjectChildren();
 		
 		},
 		
@@ -84,11 +84,9 @@
 		
 			if (typeof inTotalPagesCount != "number") return;
 		
-			if (inTotalPagesCount != this.options.totalPages)
-			this.options.manifestObject.empty()
+			this.options.totalPages = inTotalPagesCount;	
+			this.generateManifestObjectChildren();
 		
-			this.options.totalPages = inTotalPageCount;
-			
 			//	Current page out of bounds?
 			
 			if (this.options.currentPageIndex > this.options.totalPages)
@@ -113,7 +111,7 @@
 		
 		},
 		
-		generateManifestObjectChildrens: function () {		
+		generateManifestObjectChildren: function () {	
 		
 			if ((this.options.manifestObject == undefined) || (this.options.manifestObject.length == 0))
 			return mono.error("The manifest object does not even exist for the childrens to be generated.  Bailing!");
