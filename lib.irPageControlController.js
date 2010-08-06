@@ -133,9 +133,19 @@
 				
 					thisObject.handleManifestObjectChildrenMouseOut.call(thisObject, event)
 				
+				}).click(function (event) {
+				
+					thisObject.handleManifestObjectChildrenClick.call(thisObject, event)
+				
 				}).prependTo(thisObject.options.manifestObject);
 			
 			}
+		
+		},
+		
+		handleManifestObjectChildrenClick: function (event) {
+		
+			mono.log("handleManifestObjectChildrenClick called.", this, this.hash());
 		
 		},
 		
