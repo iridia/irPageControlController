@@ -80,17 +80,45 @@
 		
 		
 		
-		"setTotalPages": function (inTotalPagesCount) {
+		"setTotalPages": function (inTotalPagesCount, inOptions) {
 		
 			if (typeof inTotalPagesCount != "number") return;
+			
+			var options = $.extend(true, {
+			
+				animate: false
+				
+			}, inOptions);
 		
-			this.options.totalPages = inTotalPagesCount;	
-			this.generateManifestObjectChildren();
+			this.options.totalPages = inTotalPagesCount;
 		
-			//	Current page out of bounds?
+		
+		//	Current page out of bounds?
 			
 			if (this.options.currentPageIndex > this.options.totalPages)
 			this.setCurrentPage(null);
+		
+		
+		//	Animate the changes, or not
+				
+			var animateDuration = (options.animate) ? 250 : 0;
+			var thisObject = this;
+			
+			this.options.manifestObject.animate({
+			
+				opacity: 0
+			
+			}, animateDuration, function () {
+			
+				thisObject.generateManifestObjectChildren();
+			
+				$(this).animate({
+				
+					opacity: 1
+					
+				}, animateDuration);
+			
+			});
 		
 		},
 		
