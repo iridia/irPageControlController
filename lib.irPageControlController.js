@@ -55,13 +55,13 @@
 		
 		"setCurrentPageIndex": function (inPageIndexToMakeCurrent) {
 		
-			if (typeof inPageIndexToMakeCurrent != "number") return;
-			
 			this.representingObjectForPageIndex(this.options.currentPageIndex).removeClass(
 			
 				this.options.manifestObjectChildrenActiveCSSClass
 			
 			);
+		
+			if (typeof inPageIndexToMakeCurrent != "number") return;
 			
 			if ((inPageIndexToMakeCurrent + 1) > this.options.totalPages)
 			this.setTotalPages(inPageIndexToMakeCurrent + 1);
