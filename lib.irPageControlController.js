@@ -53,7 +53,7 @@
 		
 		
 		
-		"setCurrentPage": function (inPageIndexToMakeCurrent) {
+		"setCurrentPageIndex": function (inPageIndexToMakeCurrent) {
 		
 			if (typeof inPageIndexToMakeCurrent != "number") return;
 			
@@ -63,7 +63,7 @@
 			
 			);
 			
-			if (inPageIndexToMakeCurrent > this.options.totalPages)
+			if ((inPageIndexToMakeCurrent + 1) > this.options.totalPages)
 			this.setTotalPages(inPageIndexToMakeCurrent + 1);
 			
 			this.options.currentPageIndex = inPageIndexToMakeCurrent;
